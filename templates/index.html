@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organized OS - Luiz Carlos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h1 class="text-center: mb-4">Organized OS: Rumo ao Canadá 🇨🇦</h1>
+    
+    <div class="card p-4 mb-4 shadow-sm">
+        <h5>Adicionar Novo Compromisso</h5>
+        <form action="/adicionar" method="POST" class="row g-3">
+            <div class="col-md-4">
+              <input type="text" name="titulo" class="form-control" placeholder="O que fazer? (Ex: Aula Física, Calistenia)" required>
+            </div>
+            <div class="col-md-3">
+                <select name="dia" class="form-select">
+                    <option value="Segunda-feira">Segunda-feira</option>
+                    <option value="Terça-feira">Terça-feira</option>
+                    <option value="Quarta-feira">Quarta-feira</option>
+                    <option value="Quinta-feira">Quinta-feira</option>
+                    <option value="Sexta-feira">Sexta-feira</option>
+                    <option value="Sábado">Sábado</option>
+                    <option value="Domingo">Domingo</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                  <input type="time" name="horario" class="form-control" required>
+              </div>
+              <div class="col-md-2">
+                  <select name="tipo" class="form-select">
+                      <option value"Faculdade">🎓 Faculdade</option>
+                      <option value"Saude">💪🏼 Saúde/Treino</option>
+                      <option value"Mente">🧠 Mente</option>
+                      <option value"Code">💻 Programação</option>
+                  </select>
+              </div>
+              <div class="col-md-1">
+                  <button type="submit" class="btn btn-primary w-100">+</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+              {% for dia in ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'] %}
+              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="card h-100 border-0 shadow-sm" style="min-height: 50px;">
+                    <div class="card-header bg-dark text-white text-center fw-bold">
+                      {{ dia }}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for item in compromissos %}
+                          {% if item.dia_semana == dia %}
+                          <li class="list-group-item d-flex justify-content-between align-itens-center">
+                              <div>
+                                  <strong>{{ item.horario }}</strong> - {{ item.titulo }}
+                                  <br>
+                                  <span class="badge bg-primary rounded-pill">{{ item.tipo }}</span>
+                              </div>
+                              <a href="/deletar/{{ item.id }}" class="btn btn-outline-danger btn-sm" style="height: fit-content;">X</a>
+                         </li>
+                         {% endif %}
+                     {% endfor %}
+                 </ul>
+             </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
