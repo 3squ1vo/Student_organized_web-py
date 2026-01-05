@@ -1,4 +1,4 @@
-# Academic & Personal Sheduler
+# Academic & Personal Scheduler
 
 **Description:**
 A web application made in Python to organize and schedule personal and academic appointments.
