@@ -1,2 +1,5 @@
-# Student_organized_web-py
-App web para marcar compromissos pessoais e acadêmicos. / A Python/HTML web app for schedule personals and academic appoinntments
+# Academic & Personal Sheduler
+
+**Description:**
+A web application made in Python to organize and schedule personal and academic appointments.
+*(Um aplicativo web feito em Python para organizar e agendar compromissos pessoais e acadêmicos.)*
